@@ -303,7 +303,7 @@ header{
     transition: all 0.5s ease-in-out;
 }
 
-.cards:hover {
+.cards-job:hover {
     background: rgb(7, 209, 175);
     -o-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
@@ -426,13 +426,14 @@ footer .content ul h2{
 .feedback{
     position: fixed;
     width: 350px;
+    height: 550px;
     padding: 40px;
     background-color: #fff;
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     max-height: 80vh;
     overflow-y: auto;
-    bottom: -500px;
+    bottom: -700px;
     right: 10px;
 }
 
@@ -450,6 +451,11 @@ footer .content ul h2{
     outline: 0;
 }
 
+.modal__content{
+    display: flex;
+    height: 450px;
+    align-items: center;
+}
 
 .modal__close {
     position: absolute;
@@ -470,8 +476,9 @@ footer .content ul h2{
     text-transform: uppercase;
 }
 
+
 .btn {
-    width: 220px;
+    width: 280px;
     height: 65px;
     display: flex;
     justify-content: center;
@@ -485,6 +492,7 @@ footer .content ul h2{
     transition: 0.3s all;
     outline: 0;
     margin: 0 auto;
+    margin-top: 50px;
 }
 
 .btn_dark {
@@ -499,4 +507,12 @@ footer .content ul h2{
 
 .btn:hover {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.show{
+    display: block;
+}
+
+.hide{
+    display: none;
 }
