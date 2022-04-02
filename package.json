@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/darkdamik/-.git"
+    "url": "git+https://github.com/IvanovZakhar/-.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/darkdamik/-/issues"
+    "url": "https://github.com/IvanovZakhar/-/issues"
   },
-  "homepage": "https://github.com/darkdamik/-#readme",
+  "homepage": "https://github.com/IvanovZakhar/-#readme",
   "devDependencies": {
     "json-server": "^0.17.0"
   }
