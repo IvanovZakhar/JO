@@ -316,16 +316,16 @@ header{
     border-radius: 100%;
 }
 .photo-card_pointOne{
-    background: url("../img/1.webp")center center/cover no-repeat;
+    background: url("../img/1.webp") center center/cover no-repeat;
 }
 .photo-card_pointTwo{
-    background: url("../img/2.webp")center center/cover no-repeat;
+    background: url("../img/2.webp") center center/cover no-repeat;
 }
 .photo-card_pointThree{
-    background: url("../img/3.webp")center center/cover no-repeat;
+    background: url("../img/3.webp") center center/cover no-repeat;
 }
 .photo-card_pointFour {
-    background: url("../img/4.webp")center center/cover no-repeat;
+    background: url("../img/4.webp") center center/cover no-repeat;
 }
 .card_button {
     padding: 12px;

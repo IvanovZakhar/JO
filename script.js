@@ -65,12 +65,14 @@ forms.forEach(item =>{
 
 
 
+
 function bindPostData(form){
     form.addEventListener('submit', (e)=>{
         e.preventDefault();
 
         const statusMessege = document.createElement('img');
         statusMessege.src = message.loading;
+          feedback.style.height = '600px';
         statusMessege.style.cssText = `
             display: block;
             margin: 0 auto;
@@ -84,8 +86,9 @@ function bindPostData(form){
 
         postData('http://localhost:3000/posts', json)
         .then(data => {
-            console.log(data);
+            
             showThanksModal(message.success);
+          
             statusMessege.remove();
         }).catch(() => {
             showThanksModal(message.failure);
@@ -119,16 +122,103 @@ function showThanksModal (message) {
         </div>
     `;
 
-   
+   setTimeout(()=>{
+    requestAnimationFrame(closeAnimation);
+   }, 2000);
 
     document.querySelector('.feedback').append(thanksModal);
-
+    
     setTimeout(()=>{
         prevModalDialog.classList.add('show');
         prevModalDialog.classList.remove('hide');
-        requestAnimationFrame(closeAnimation);
+       
         thanksModal.remove();
     }, 4000);
 
+    
 
 }
+
+document.addEventListener('keydown', (e) => {
+    if(e.code === "Escape" && feedback.classList.contains('show')){
+        requestAnimationFrame(closeAnimation);
+
+    }
+ });
+
+ // GET comments
+
+ const comments = document.querySelectorAll('.comment__form');
+
+ comments.forEach(com =>{
+    bindPostCom(com);
+ });
+
+
+ function bindPostCom(com){
+    com.addEventListener('submit', (e)=>{
+        e.preventDefault();
+
+       
+
+        const formData = new FormData(com);
+
+        const json = JSON.stringify(Object.fromEntries(formData.entries()));
+    
+
+        postData('http://localhost:3000/comments', json);
+      
+
+
+    });
+}
+
+
+// POST comments
+
+
+    //   Использовать классы для карточек
+
+    class omment {
+        constructor (namecom, comment, parentSelector) {
+            this.namecom = namecom;
+            this.comment = comment;
+            this.parent = document.querySelector(parentSelector);
+        }
+
+
+        render() {
+            const element = document.createElement('div');
+            if(this.classes.length === 0){
+                this.classes = 'new_comment';
+                element.classList.add(this.classes)
+            }else{
+                 this.classes.forEach(className => element.classList.add(className));
+            }
+           
+            element.innerHTML = `
+                <h3 class="name">${this.namecom}</h3>
+                <h3 class="comment">${this.comment}</h3>
+            `;
+            
+            this.parent.append(element);
+            
+        }
+
+        
+    }
+
+
+    getResourse('http://localhost:3000/comment')
+        .then(data => {
+            data.forEach(({name, comment}) =>{
+                new comment(name, comment, '.admin').render();
+            });
+        });
+
+    // axios.get('http://localhost:3000/menu')
+    //     .then(data => {
+    //         data.data.forEach(({img, altimg, title, descr, price}) =>{
+    //             new MenuCard(img, altimg, title, descr, price, '.menu .container').render();
+    //         });
+    //     });
